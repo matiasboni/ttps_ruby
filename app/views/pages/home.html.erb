@@ -1,14 +1,14 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
-<% if current_user.admin? %>
-   holaaaa
-<% end %>
 <% if current_user %>
     <p>Hola <%=current_user.email %>! </p>
     <p>You are a [<%= current_user.role %>]</p>
     <p>
        Se encuentra correctamente autenticado
     </p>
+    <% if current_user.admin? %>
+       holaaaa
+    <% end %>
     <%= link_to "Cerrar sesión", destroy_user_session_path, 'data-turbo-method': :delete %>
 <% else %>
   <p> No se encuentra autenticado in.</p>

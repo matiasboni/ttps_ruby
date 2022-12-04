@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2022-12-04 18:34:38
+  motive: MyText
+  state: 1
+  result: MyText
+
+two:
+  date: 2022-12-04 18:34:38
+  motive: MyText
+  state: 1
+  result: MyText

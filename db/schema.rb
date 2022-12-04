@@ -10,13 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_04_200212) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_04_213438) do
+  create_table "bussiness_hours", force: :cascade do |t|
+    t.integer "day"
+    t.time "opening_time"
+    t.time "closing_time"
+    t.integer "subsidiary_id"
+    t.index ["subsidiary_id"], name: "index_bussiness_hours_on_subsidiary_id"
+  end
+
   create_table "subsidiaries", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "turns", force: :cascade do |t|
+    t.datetime "date", precision: nil
+    t.text "motive"
+    t.integer "state"
+    t.text "result"
+    t.integer "subsidiary_id"
+    t.integer "client_id"
+    t.integer "staff_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_turns_on_client_id"
+    t.index ["staff_id"], name: "index_turns_on_staff_id"
+    t.index ["subsidiary_id"], name: "index_turns_on_subsidiary_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -26,10 +49,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_04_200212) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "role", default: 0, null: false
+    t.integer "subsidiary_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["subsidiary_id"], name: "index_users_on_subsidiary_id"
   end
 
 end

@@ -34,6 +34,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
 
       t.integer :role, default: 0 , null:false
 
+      t.belongs_to :subsidiary ,index:true , null:true
+
       t.timestamps null: false
     end
 
