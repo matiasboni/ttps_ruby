@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @subsidiary %>
+
+<div>
+  <%= link_to "Edit this subsidiary", edit_subsidiary_path(@subsidiary) %> |
+  <%= link_to "Back to subsidiaries", subsidiaries_path %>
+
+  <%= button_to "Destroy this subsidiary", @subsidiary, method: :delete %>
+</div>

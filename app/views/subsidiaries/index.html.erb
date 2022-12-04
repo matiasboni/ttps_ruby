@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Subsidiaries</h1>
+
+<div id="subsidiaries">
+  <% @subsidiaries.each do |subsidiary| %>
+    <%= render subsidiary %>
+    <p>
+      <%= link_to "Show this subsidiary", subsidiary %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New subsidiary", new_subsidiary_path %>
