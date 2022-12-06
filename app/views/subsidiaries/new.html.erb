@@ -1,9 +1,8 @@
-<h1>New subsidiary</h1>
+<%= render "layouts/navbar" %>
+<h1 class ="text-center" style="color: #1F3864">Crear Sucursal</h1>
 
 <%= render "form", subsidiary: @subsidiary %>
 
 <br>
 
-<div>
-  <%= link_to "Back to subsidiaries", subsidiaries_path %>
-</div>
+  <%= button_to "Volver", subsidiaries_path ,method: :get  %>

@@ -1,15 +1,37 @@
 <%= render "layouts/navbar" %>
+<%= stylesheet_link_tag "pagination", "data-turbo-track": "reload" %>
 <p style="color: green"><%= notice %></p>
 
 <h1 class ="text-center" style="color: #1F3864">Sucursales</h1>
 
 <div id="subsidiaries">
-  <% @subsidiaries.each do |subsidiary| %>
-    <%= render subsidiary %>
-    <p>
-      <%= link_to "Show this subsidiary", subsidiary %>
-    </p>
-  <% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Dirección</th>
+      <th>Teléfono</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subsidiaries.each do |subsidiary| %>
+      <tr>
+        <td><%= subsidiary.name %></td>
+        <td><%= subsidiary.address %></td>
+        <td><%= subsidiary.phone_number %></td>
+        <td><%= link_to 'Detalle', subsidiary %></td>
+        <td><%= link_to 'Editar', edit_subsidiary_path(subsidiary) %></td>
+        <td><%= link_to 'Eliminar', @subsidiary, method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="digg_pagination">
+  <%= will_paginate @subsidiaries, :container => false %>
+</div>
 </div>
 
-<%= link_to "New subsidiary", new_subsidiary_path %>
+<%= link_to 'New Subsidiary', new_subsidiary_path %>

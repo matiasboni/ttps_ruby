@@ -3,7 +3,7 @@ class SubsidiariesController < ApplicationController
 
   # GET /subsidiaries or /subsidiaries.json
   def index
-    @subsidiaries = Subsidiary.all
+    @subsidiaries = Subsidiary.paginate(page: params[:page],per_page: 10)
   end
 
   # GET /subsidiaries/1 or /subsidiaries/1.json
