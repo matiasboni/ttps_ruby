@@ -1,17 +1,23 @@
 <div id="<%= dom_id subsidiary %>">
-  <p>
-    <strong>Name:</strong>
+  <p class="fs-4" style="color: #1F3864">
+    <strong>Nombre:</strong>
     <%= subsidiary.name %>
   </p>
 
-  <p>
-    <strong>Address:</strong>
+  <p class="fs-4" style="color: #1F3864">
+    <strong>Dirección:</strong>
     <%= subsidiary.address %>
   </p>
 
-  <p>
-    <strong>Phone number:</strong>
+  <p class="fs-4" style="color: #1F3864">
+    <strong>Número de télefono:</strong>
     <%= subsidiary.phone_number %>
   </p>
+
+  <% if @subsidiary.bussiness_hours.empty? %>
+    <p class="fs-4" style="color: #1F3864">
+       Esta sucursal no tiene horarios de atención por ahora.
+    </p> 
+  <% end %>
 
 </div>

@@ -4,6 +4,7 @@
 
 <h1 class ="text-center" style="color: #1F3864">Sucursales</h1>
 
+<br>
 <div id="subsidiaries">
 <table class="table table-striped">
   <thead>
@@ -11,7 +12,7 @@
       <th>Nombre</th>
       <th>Dirección</th>
       <th>Teléfono</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -21,17 +22,17 @@
         <td><%= subsidiary.name %></td>
         <td><%= subsidiary.address %></td>
         <td><%= subsidiary.phone_number %></td>
-        <td><%= link_to 'Detalle', subsidiary %></td>
-        <td><%= link_to 'Editar', edit_subsidiary_path(subsidiary) %></td>
-        <td><%= link_to 'Eliminar', @subsidiary, method: :delete %></td>
+        <td><%= button_to 'Detalle', subsidiary,method: :get , :class=> 'button1' %></td>
+        <td><%= button_to 'Editar', edit_subsidiary_path(subsidiary),method: :get , :class=> 'button1' %></td>
+        <td><%= button_to 'Horario Atención',root_path ,:class=> 'button1' %> </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <div class="digg_pagination">
-  <%= will_paginate @subsidiaries, :container => false %>
+  <%= will_paginate @subsidiaries, :container => false %> 
+  <%= button_to 'Crear Sucursal', new_subsidiary_path,method: :get , :class=> 'button2' %>
 </div>
 </div>
 
-<%= link_to 'New Subsidiary', new_subsidiary_path %>
