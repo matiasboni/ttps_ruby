@@ -1,0 +1,14 @@
+<%= render "layouts/navbar" %>
+
+<h1 class ="text-center" style="color: #1F3864">Información Usuario</h1>
+
+<div id="<%= dom_id @user %>">
+  <p class="fs-4" style="color: #1F3864">
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
+
+  <p class="fs-4" style="color: #1F3864">
+    <strong>Rol:</strong>
+    <%= @user.role.capitalize %>
+  </p>

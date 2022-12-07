@@ -1,0 +1,38 @@
+<%= render "layouts/navbar" %>
+
+<h1 class ="text-center" style="color: #1F3864">Usuarios</h1>
+
+<br>
+
+
+<div id="users">
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Rol</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.role.capitalize %></td>
+        <td><%= button_to 'Detalle', user, method: :get %></td></td>
+        <td><%= button_to 'Editar' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="digg_pagination">
+  <%= will_paginate @subsidiaries, :container => false %> 
+  <%= button_to 'Crear Sucursal'%>
+</div>
+
+
+</div>

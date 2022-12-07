@@ -6,6 +6,7 @@
        Se encuentra correctamente autenticado
     </p>
     <% if current_user.admin? %>
+        <%= link_to "edit account", edit_user_registration_path %>
         <%= link_to "Sucursales" , subsidiaries_path %>
     <% end %>
     <%= link_to "Cerrar sesión", destroy_user_session_path, 'data-turbo-method': :delete %>

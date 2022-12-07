@@ -7,10 +7,10 @@
           <a class="nav-link active" aria-current="page" href="<%= subsidiaries_path %>">Gestionar Sucursales</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="">Gestionar Usuarios</a>
+          <a class="nav-link active" href="<%= users_path %>">Gestionar Usuarios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#" >Ver información de perfil</a>
+          <%= link_to "Ver información de perfil", current_user , :class=> 'nav-link active' %>
         </li>
       </ul>
     </div>
