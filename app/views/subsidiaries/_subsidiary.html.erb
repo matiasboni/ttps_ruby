@@ -17,7 +17,35 @@
   <% if @subsidiary.bussiness_hours.empty? %>
     <p class="fs-4" style="color: #1F3864">
        Esta sucursal no tiene horarios de atención por ahora.
-    </p> 
+    </p>
+  <% else %>
+  <p class="fs-4" style="color: #1F3864">
+    <strong>Horarios de atención:</strong>
+  </p>
+    <table class="table table-striped">
+      <thead>
+         <tr>
+            <th>Dia</th>
+            <th>Horario de apertura</th>
+            <th>Horario de cierre</th>
+        </tr>
+      </thead>
+      <tbody>
+         <% @subsidiary.bussiness_hours.each do |s| %>
+          <tr>
+            <td>
+              <%=  day_to_string(s.day) %>
+            </td>
+            <td>
+              <%= s.opening_time.strftime("%H:%M")  %>
+            </td>
+            <td>
+               <%= s.closing_time.strftime("%H:%M") %>
+            </td>
+          </tr>
+        <% end %>
+  </tbody>
+  </table>
   <% end %>
 
 </div>

@@ -6,6 +6,6 @@
 <br>
 
 <div>
-  <%= link_to "Show this subsidiary", @subsidiary %> |
-  <%= link_to "Back to subsidiaries", subsidiaries_path %>
+  <%= button_to "Detalle", @subsidiary, method: :get %>
+  <%= button_to "Volver", subsidiaries_path ,method: :get  %>
 </div>

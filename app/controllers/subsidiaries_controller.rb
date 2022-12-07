@@ -22,7 +22,6 @@ class SubsidiariesController < ApplicationController
   # POST /subsidiaries or /subsidiaries.json
   def create
     @subsidiary = Subsidiary.new(subsidiary_params)
-
     respond_to do |format|
       if @subsidiary.save
         format.html { redirect_to subsidiary_url(@subsidiary), notice: "Subsidiary was successfully created." }
@@ -65,6 +64,13 @@ class SubsidiariesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def subsidiary_params
-      params.require(:subsidiary).permit(:name, :address, :phone_number)
+      params.require(:subsidiary).permit(:name, :address, :phone_number,
+      bussiness_hours_attributes: [
+                :id,
+                :opening_time,
+                :closing_time,
+                :day,
+                :_destroy,
+            ])
     end
 end

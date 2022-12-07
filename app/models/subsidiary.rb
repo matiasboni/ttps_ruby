@@ -1,5 +1,6 @@
 class Subsidiary < ApplicationRecord
     has_many :bussiness_hours
+    accepts_nested_attributes_for :bussiness_hours, allow_destroy: true
     has_many :turns
     has_many :staffs,class_name: "User"
 
