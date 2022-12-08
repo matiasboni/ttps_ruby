@@ -1,0 +1,17 @@
+<%= render "layouts/navbar" %>
+
+<h1 class ="text-center" style="color: #1F3864">Editar Usuario</h1>
+
+<%= form_with(model: @user , url: update_user_url) do |form| %>
+  <div>
+    <%= form.label :email,"Email", :class => 'form-label' %>
+    <%= form.email_field :email, :class=> 'form-control' , :readonly => true %>
+  </div>
+
+  <div>
+    <%= form.label :role, "Rol" , :class=> 'form-label' %>
+    <%= form.select :role , [["Admin","admin"],["Personal Bancario","staff"],["Cliente","client"]],selected: @user.role %>
+  </div>
+
+   <%= form.submit "Confirmar cambios" %> 
+<% end %>

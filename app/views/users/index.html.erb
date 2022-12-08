@@ -1,4 +1,7 @@
 <%= render "layouts/navbar" %>
+<%= stylesheet_link_tag "pagination", "data-turbo-track": "reload" %>
+
+<p style="color: green"><%= notice %></p>
 
 <h1 class ="text-center" style="color: #1F3864">Usuarios</h1>
 
@@ -22,16 +25,18 @@
       <tr>
         <td><%= user.email %></td>
         <td><%= user.role.capitalize %></td>
-        <td><%= button_to 'Detalle', user, method: :get %></td></td>
-        <td><%= button_to 'Editar' %></td>
+        <td><%= button_to 'Detalle', user, method: :get, :class=> 'button1' %></td></td>
+        <td><%= button_to 'Editar', edit_user_url(user) ,method: :get , :class=> 'button1' %></td>
+        <td><%= button_to "Eliminar", user, method: :delete, form: {data: {'turbo-confirm': 
+        'Esta seguro que desea eliminar este usuario?' }} , :class=> 'button1' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <div class="digg_pagination">
-  <%= will_paginate @subsidiaries, :container => false %> 
-  <%= button_to 'Crear Sucursal'%>
+  <%= will_paginate @users, :container => false %> 
+  <%= button_to 'Crear Usuario', new_user_url,method: :get , :class=> 'button2' %>
 </div>
 
 

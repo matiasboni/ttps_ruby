@@ -1,0 +1,29 @@
+<%= form_with(model: user , url: create_user_url) do |form| %>
+  <% if user.errors.any? %>
+    <div style="color: #1F3864">
+      <h2>Se han encontrado <%= pluralize(user.errors.count, "errores") %> :</h2>
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :email,"Email", :class => 'form-label' %>
+    <%= form.email_field :email, :class=> 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :password, "Contraseña" , :class=> 'form-label' %>
+    <%= form.password_field :password , :class=> 'form-control'%>
+  </div>
+
+  <div>
+    <%= form.label :role, "Rol" , :class=> 'form-label' %>
+    <%= form.select :role , [["Admin","admin"],["Personal Bancario","staff"]] %>
+  </div>
+
+   <%= form.submit "Guardar Usuario" %> 
+<% end %>

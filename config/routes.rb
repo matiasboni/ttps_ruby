@@ -3,8 +3,13 @@ Rails.application.routes.draw do
   root 'pages#home'
   devise_for :users
   resources :subsidiaries
-  match '/users' , to: 'users#index' , via: 'get'
-  get '/users/:id' ,to: 'users#show' ,as: 'user'
+
+  resources :users , only: [:index, :show , :new , :destroy]
+
+  post 'users/create/' ,to: "users#create" , as:"create_user"
+  get 'users/edit/:id' ,to: "users#edit" ,as: "edit_user"
+  patch 'users/update/:id' , to: "users#update" ,as: "update_user"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

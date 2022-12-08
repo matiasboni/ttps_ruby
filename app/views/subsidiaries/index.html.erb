@@ -24,6 +24,8 @@
         <td><%= subsidiary.phone_number %></td>
         <td><%= button_to 'Detalle', subsidiary,method: :get , :class=> 'button1' %></td>
         <td><%= button_to 'Editar', edit_subsidiary_path(subsidiary),method: :get , :class=> 'button1' %></td>
+        <td><%= button_to "Eliminar", subsidiary, method: :delete, form: {data: {'turbo-confirm': 
+        'Esta seguro que desea eliminar esta sucursal?' }} , :class=> 'button1' %></td>
       </tr>
     <% end %>
   </tbody>
