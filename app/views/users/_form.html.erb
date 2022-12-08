@@ -19,11 +19,12 @@
     <%= form.label :password, "Contraseña" , :class=> 'form-label' %>
     <%= form.password_field :password , :class=> 'form-control'%>
   </div>
-
+  <br>
   <div>
     <%= form.label :role, "Rol" , :class=> 'form-label' %>
-    <%= form.select :role , [["Admin","admin"],["Personal Bancario","staff"]] %>
+    <%= form.select :role , [["Administrador","admin"],["Personal Bancario","staff"]] , :class=> 'form-select'%>
   </div>
-
+   <br>
+   
    <%= form.submit "Guardar Usuario" %> 
 <% end %>

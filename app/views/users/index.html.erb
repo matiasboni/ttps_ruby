@@ -24,7 +24,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= user.role.capitalize %></td>
+        <td><%= convert_role_to_s(user.role) %></td>
         <td><%= button_to 'Detalle', user, method: :get, :class=> 'button1' %></td></td>
         <td><%= button_to 'Editar', edit_user_url(user) ,method: :get , :class=> 'button1' %></td>
         <td><%= button_to "Eliminar", user, method: :delete, form: {data: {'turbo-confirm': 
