@@ -3,15 +3,39 @@
 <h1 class ="text-center" style="color: #1F3864">Editar Usuario</h1>
 
 <%= form_with(model: @user , url: update_user_url) do |form| %>
+
+<% if @user.errors.any? %>
+    <div style="color: #1F3864">
+      <h2>Se han encontrado <%= pluralize(@user.errors.count, "errores") %> :</h2>
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li><%= error.message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
   <div>
     <%= form.label :email,"Email", :class => 'form-label' %>
     <%= form.email_field :email, :class=> 'form-control' , :readonly => true %>
   </div>
 
+  <br>
+
+  <div data-controller="roles" data-roles-show-if-value="staff">
   <div>
     <%= form.label :role, "Rol" , :class=> 'form-label' %>
-    <%= form.select :role , [["Admin","admin"],["Personal Bancario","staff"],["Cliente","client"]],selected: @user.role %>
+    <%= form.select :role , [["Administrador","admin"],["Personal Bancario","staff"],["Cliente","client"]],{class: 'form-select'} ,{data: {roles_target: "input", action: "change->roles#toggle"}}  %>
   </div>
+   <br>
+
+    <div data-roles-target="output">
+    <%= form.label :subsidiary_id, "Sucursal" , :class=> 'form-label' %>
+    <% options = Subsidiary.all.map{|s| [s.name,s.id]} %>
+    <%= form.select :subsidiary_id , options_for_select(options),{include_blank:true} , {class: 'form-select'} %>
+    </div>
+</div>
 
    <%= form.submit "Confirmar cambios" %> 
 <% end %>

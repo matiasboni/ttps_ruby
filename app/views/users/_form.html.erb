@@ -9,7 +9,6 @@
       </ul>
     </div>
   <% end %>
-
   <div>
     <%= form.label :email,"Email", :class => 'form-label' %>
     <%= form.email_field :email, :class=> 'form-control' %>
@@ -20,11 +19,20 @@
     <%= form.password_field :password , :class=> 'form-control'%>
   </div>
   <br>
+
+<div data-controller="roles" data-roles-show-if-value="staff">
   <div>
     <%= form.label :role, "Rol" , :class=> 'form-label' %>
-    <%= form.select :role , [["Administrador","admin"],["Personal Bancario","staff"]] , :class=> 'form-select'%>
+    <%= form.select :role , [["Administrador","admin"],["Personal Bancario","staff"]],{class: 'form-select'} ,{data: {roles_target: "input", action: "change->roles#toggle"}}  %>
   </div>
    <br>
-   
+
+    <div data-roles-target="output">
+    <%= form.label :subsidiary_id, "Sucursal" , :class=> 'form-label' %>
+    <% options = Subsidiary.all.map{|s| [s.name,s.id]} %>
+    <%= form.select :subsidiary_id , options_for_select(options),{include_blank:true} , {class: 'form-select'} %>
+    </div>
+</div>
+
    <%= form.submit "Guardar Usuario" %> 
 <% end %>

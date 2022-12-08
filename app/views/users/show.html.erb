@@ -11,3 +11,10 @@
     <strong>Rol:</strong>
     <%= convert_role_to_s(@user.role) %>
   </p>
+
+  <% if @user.staff? %>
+      <p class="fs-4" style="color: #1F3864">
+         <strong>Sucursal asignada:</strong>
+       <%= @user.subsidiary.name %>
+  <% end %>
+  </p>
