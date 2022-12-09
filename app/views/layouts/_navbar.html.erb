@@ -1,3 +1,5 @@
+<% if current_user.admin? %>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="<%= root_path %>">BANCO ARGENTINA</a>
@@ -12,9 +14,46 @@
         <li class="nav-item">
           <%= link_to "Ver información de perfil", current_user , :class=> 'nav-link active' %>
         </li>
+        <li class="nav-item">
+          <%= link_to "Editar datos", edit_user_registration_path , :class=> 'nav-link active' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Cerrar sesión", destroy_user_session_path,'data-turbo-method': :delete ,
+          form: {data: {'turbo-confirm': 'Esta seguro que desea eliminar este usuario?' }}, :class=> 'nav-link active' %>
+        </li>
       </ul>
     </div>
   </div>
-</nav>
+ </nav>
+
+<% elsif current_user.staff? %>
+
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="<%= root_path %>">BANCO ARGENTINA</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="<%= subsidiaries_path %>">Sucursales</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="<%= users_path %>">Clientes</a>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Ver información de perfil", current_user , :class=> 'nav-link active' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Editar datos", edit_user_registration_path , :class=> 'nav-link active' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Cerrar sesión", destroy_user_session_path,'data-turbo-method': :delete , form: {data: {'turbo-confirm': 
+        'Esta seguro que desea eliminar este usuario?' }},:class=> 'nav-link active' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+ </nav>
+
+ <% end %>
 
 <p style="color: green"><%= notice %></p>

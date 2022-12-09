@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show destroy edit update ]
 
     def index
+      if current_user.admin?
         @users= User.paginate(page: params[:page],per_page: 8)
+      elsif current_user.staff?
+        @users= User.client.paginate(page: params[:page],per_page: 8)
+      end
     end
 
     def show

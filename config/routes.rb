@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :turns
   root 'pages#home'
-  devise_for :users
+  devise_for :users , :controllers => {registrations: 'users/registrations'}
   resources :subsidiaries
 
   resources :users , only: [:index, :show , :new , :destroy]

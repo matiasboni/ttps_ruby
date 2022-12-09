@@ -26,17 +26,21 @@
         <td><%= user.email %></td>
         <td><%= convert_role_to_s(user.role) %></td>
         <td><%= button_to 'Detalle', user, method: :get, :class=> 'button1' %></td></td>
+        <% if current_user.admin? %>
         <td><%= button_to 'Editar', edit_user_url(user) ,method: :get , :class=> 'button1' %></td>
         <td><%= button_to "Eliminar", user, method: :delete, form: {data: {'turbo-confirm': 
         'Esta seguro que desea eliminar este usuario?' }} , :class=> 'button1' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <div class="digg_pagination">
-  <%= will_paginate @users, :container => false %> 
+  <%= will_paginate @users, :container => false %>
+  <% if current_user.admin? %>
   <%= button_to 'Crear Usuario', new_user_url,method: :get , :class=> 'button2' %>
+  <% end %>
 </div>
 
 
