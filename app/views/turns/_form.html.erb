@@ -1,37 +1,34 @@
 <%= form_with(model: turn) do |form| %>
   <% if turn.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(turn.errors.count, "error") %> prohibited this turn from being saved:</h2>
-
+    <div style="color: #1F3864">
+      <h2>Se han encontrado <%= pluralize(turn.errors.count, "errores") %> :</h2>
       <ul>
         <% turn.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li><%= error.message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
   <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.datetime_field :date %>
+    <%= form.label :date,"Fecha y hora del turno",class:'form-label' %>
+    <%= form.datetime_field :date , class:'form-control'  %>
   </div>
 
   <div>
-    <%= form.label :motive, style: "display: block" %>
-    <%= form.text_area :motive %>
+    <%= form.label :motive,"Motivo de la solicitud" ,class:'form-label' %>
+    <%= form.text_area :motive , class:'form-control'%>
   </div>
-
+    <%= form.label :subsidiary_id, "Sucursal" , class:'form-label' %>
+    <%= form.select :subsidiary_id , ("<option></option>" + options_from_collection_for_select(Subsidiary.all, :id, :name, {:selected => @turn.subsidiary_id})).html_safe  %>
   <div>
-    <%= form.label :state, style: "display: block" %>
-    <%= form.number_field :state %>
-  </div>
-
+   
+  <br>
   <div>
-    <%= form.label :result, style: "display: block" %>
-    <%= form.text_area :result %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <% if  ! turn.persisted? %>
+    <%= form.submit "Solicitar turno" %>
+  <% else %>
+    <%= form.submit "Editar turno" %>
+  <% end %>
   </div>
 <% end %>

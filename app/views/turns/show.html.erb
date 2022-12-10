@@ -1,10 +1,41 @@
-<p style="color: green"><%= notice %></p>
+<%= render "layouts/navbar" %>
 
-<%= render @turn %>
+<h1 class ="text-center" style="color: #1F3864">Información del Turno</h1>
 
-<div>
-  <%= link_to "Edit this turn", edit_turn_path(@turn) %> |
-  <%= link_to "Back to turns", turns_path %>
+  <p class="fs-4" style="color: #1F3864">
+    <strong>Fecha:</strong>
+    <%= I18n.l(@turn.date.to_date, locale: :es) %> 
+  </p>
 
-  <%= button_to "Destroy this turn", @turn, method: :delete %>
-</div>
+  <p class="fs-4" style="color: #1F3864">
+    <strong>Hora:</strong>
+    <%= convert_time(@turn.date) %>
+  </p>
+
+  <p class="fs-4" style="color: #1F3864">
+    <strong>Motivo:</strong>
+    <%= @turn.motive %>
+  </p>
+
+  <p class="fs-4" style="color: #1F3864">
+    <strong>Estado:</strong>
+    <%= convert(@turn.state) %>
+  </p>
+
+  <p class="fs-4" style="color: #1F3864">
+    <strong>Sucursal:</strong>
+    <%= @turn.subsidiary.name %>
+  </p>
+
+  <% if @turn.state %>
+    <p class="fs-4" style="color: #1F3864">
+      <strong>Atendido por:</strong>
+      <%= @turn.staff.name %>
+    </p>
+
+    <p class="fs-4" style="color: #1F3864">
+      <strong>Resultado:</strong>
+      <%= @turn.result %>
+    </p>
+  <% end %>
+

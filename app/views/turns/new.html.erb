@@ -1,9 +1,4 @@
-<h1>New turn</h1>
+<%= render "layouts/navbar" %>
+<h1 class ="text-center" style="color: #1F3864">Solicitar un turno</h1>
 
 <%= render "form", turn: @turn %>
-
-<br>
-
-<div>
-  <%= link_to "Back to turns", turns_path %>
-</div>

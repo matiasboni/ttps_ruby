@@ -3,7 +3,7 @@ class TurnsController < ApplicationController
 
   # GET /turns or /turns.json
   def index
-    @turns = Turn.all
+    @turns = Turn.where(client_id:current_user.id).paginate(page: params[:page],per_page: 8)
   end
 
   # GET /turns/1 or /turns/1.json
@@ -22,10 +22,10 @@ class TurnsController < ApplicationController
   # POST /turns or /turns.json
   def create
     @turn = Turn.new(turn_params)
-
+    @turn.client_id= current_user.id
     respond_to do |format|
       if @turn.save
-        format.html { redirect_to turn_url(@turn), notice: "Turn was successfully created." }
+        format.html { redirect_to turn_url(@turn), notice: "El turno fue solicitado correctamente." }
         format.json { render :show, status: :created, location: @turn }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class TurnsController < ApplicationController
   def update
     respond_to do |format|
       if @turn.update(turn_params)
-        format.html { redirect_to turn_url(@turn), notice: "Turn was successfully updated." }
+        format.html { redirect_to turn_url(@turn), notice: "El turno fue editado correctamente." }
         format.json { render :show, status: :ok, location: @turn }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class TurnsController < ApplicationController
     @turn.destroy
 
     respond_to do |format|
-      format.html { redirect_to turns_url, notice: "Turn was successfully destroyed." }
+      format.html { redirect_to turns_url, notice: "El turno fue cancelado exitosamente." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +65,6 @@ class TurnsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def turn_params
-      params.require(:turn).permit(:date, :motive, :state, :result)
+      params.require(:turn).permit(:date, :motive , :subsidiary_id)
     end
 end

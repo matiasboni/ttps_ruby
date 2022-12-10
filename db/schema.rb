@@ -28,9 +28,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_04_213438) do
   end
 
   create_table "turns", force: :cascade do |t|
-    t.datetime "date", precision: nil
+    t.datetime "date"
     t.text "motive"
-    t.integer "state"
+    t.boolean "state", default: false
     t.text "result"
     t.integer "subsidiary_id"
     t.integer "client_id"

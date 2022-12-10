@@ -1,14 +1,38 @@
+<%= render "layouts/navbar" %>
+<%= stylesheet_link_tag "pagination", "data-turbo-track": "reload" %>
 <p style="color: green"><%= notice %></p>
 
-<h1>Turns</h1>
+<h1 class ="text-center" style="color: #1F3864">Turnos</h1>
 
-<div id="turns">
-  <% @turns.each do |turn| %>
-    <%= render turn %>
-    <p>
-      <%= link_to "Show this turn", turn %>
-    </p>
-  <% end %>
+<br>
+<div id="subsidiaries">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Estado</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @turns.each do |turn| %>
+      <tr>
+        <td><%= I18n.l(turn.date.to_date, locale: :es) %></td>
+        <td><%= convert_time(turn.date) %></td>
+        <td><%= convert(turn.state) %></td>
+        <td><%= button_to 'Detalle', turn,method: :get , :class=> 'button1' %></td>
+        <td><%= button_to 'Editar', edit_turn_path(turn),method: :get , :class=> 'button1' %></td>
+        <td><%= button_to "Cancelar", turn, method: :delete, form: {data: {'turbo-confirm': 
+        'Esta seguro que desea eliminar esta sucursal?' }} , :class=> 'button1' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="digg_pagination">
+  <%= will_paginate @turns, :container => false %>
+</div>
 </div>
 
-<%= link_to "New turn", new_turn_path %>

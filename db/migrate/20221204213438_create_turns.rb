@@ -1,9 +1,9 @@
 class CreateTurns < ActiveRecord::Migration[7.0]
   def change
     create_table :turns do |t|
-      t.timestamp :date
+      t.datetime :date
       t.text :motive
-      t.integer :state
+      t.boolean :state ,default:0
       t.text :result
       t.belongs_to :subsidiary , index: true
       t.belongs_to :client , class_name: 'User' , index:true , null:true
