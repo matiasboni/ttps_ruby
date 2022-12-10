@@ -1,5 +1,11 @@
 class SubsidiariesController < ApplicationController
   before_action :set_subsidiary, only: %i[ show edit update destroy ]
+  #Para todas las acciones se necesita usuario autenticado.
+  before_action :authenticate_user!
+  #Acciones que solo puede realizar el admin.
+  before_action :admin_only , only: %i[destroy edit update create new]
+  #Si no es cliente puede visualizar el listado y el detalle.
+  before_action :not_client , only: %i[index show]
 
   # GET /subsidiaries or /subsidiaries.json
   def index
@@ -73,4 +79,18 @@ class SubsidiariesController < ApplicationController
                 :_destroy,
             ])
     end
+
+    def admin_only
+      if not current_user.admin?
+        render file: "#{Rails.root}/public/404.html", status: :not_found
+      end
+    end
+
+    def not_client
+      if current_user.client?
+        render file: "#{Rails.root}/public/404.html", status: :not_found
+      end
+    end
+
+    
 end
