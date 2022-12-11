@@ -4,9 +4,10 @@ class Subsidiary < ApplicationRecord
     has_many :turns
     has_many :staffs,class_name: "User"
 
-    validates :name , presence:{message: "El nombre no puede ser blanco"} ,
-    uniqueness: {message: "El nombre ingresado ya existe"}
-    validates :address ,presence: {message: "La dirección no puede ser blanco"}
-    validates :phone_number , presence: {message: "El número de télefono no puede ser blanco"},
-    numericality: {only_integer:true,message: "El número de teléfono solo admite números"}
+    validates :name , presence:{message: "El nombre no puede ser blanco."} ,
+    uniqueness: {message: "El nombre ingresado ya existe."}
+    validates :address ,presence: {message: "La dirección no puede ser blanco."}
+    validates :phone_number , presence: {message: "El número de télefono no puede ser blanco."},
+    numericality: {only_integer:true,message: "El número de teléfono solo admite números."}
+    validates :bussiness_hours ,presence:{message:"Debe crear una sucursal con un horario de atención."}
 end

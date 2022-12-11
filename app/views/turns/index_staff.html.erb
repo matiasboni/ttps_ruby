@@ -23,10 +23,8 @@
         <td><%= convert_time(turn.date) %></td>
         <td><%= convert(turn.state) %></td>
         <td><%= button_to 'Detalle', turn,method: :get , :class=> 'button1' %></td>
-        <% if ! turn.state %>
-        <td><%= button_to 'Editar', edit_turn_path(turn),method: :get , :class=> 'button1' %></td>
-        <td><%= button_to "Cancelar", turn, method: :delete, form: {data: {'turbo-confirm': 
-        'Esta seguro que desea eliminar esta sucursal?' }} , :class=> 'button1' %></td>
+        <% if ! turn.state %> 
+        <td><%= button_to 'Atender', attend_turn_path(turn),method: :get , :class=> 'button1' %></td>
         <% end %>
       </tr>
     <% end %>
@@ -37,4 +35,3 @@
   <%= will_paginate @turns, :container => false %>
 </div>
 </div>
-

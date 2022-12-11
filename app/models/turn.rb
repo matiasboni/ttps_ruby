@@ -3,10 +3,12 @@ class Turn < ApplicationRecord
     belongs_to :client ,class_name: "User"
     belongs_to :subsidiary 
 
-    validates :date , presence:{message: "La fecha no puede ser blanco."} 
+    validates :date , presence:{message: "La fecha no puede ser blanco."}
+    validates :date , comparison:{greater_than: DateTime.current , message: "La fecha y hora de solicitud debe ser futura."}
     validates :motive , presence:{message: "Debe dar un motivo de la solicitud."}
     validates :subsidiary , presence:{message: "Debe seleccionar una sucursal."}
     validates :client , presence:{message: "Debe tener asociado un cliente."}
+    validates :result , presence:{message: "Debe dar un resultado al turno."} , if: :is_attend_action?
     validate :is_in_range?, if: :is_not_nil?
 
     def is_in_range?
@@ -20,7 +22,11 @@ class Turn < ApplicationRecord
     end
 
     def is_not_nil?
-        subsidiary!=nil && date != nil
+        self.subsidiary!=nil && self.date != nil
+    end
+
+    def is_attend_action?
+        self.state == true  
     end
 
 

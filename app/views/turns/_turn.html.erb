@@ -1,22 +1,39 @@
 <div id="<%= dom_id turn %>">
-  <p>
-    <strong>Date:</strong>
-    <%= turn.date %>
+<p class="fs-4" style="color: #1F3864">
+    <strong>Fecha:</strong>
+    <%= I18n.l(@turn.date.to_date, locale: :es) %> 
+</p>
+
+  <p class="fs-4" style="color: #1F3864">
+    <strong>Hora:</strong>
+    <%= convert_time(@turn.date) %>
   </p>
 
-  <p>
-    <strong>Motive:</strong>
-    <%= turn.motive %>
+  <p class="fs-4" style="color: #1F3864">
+    <strong>Motivo:</strong>
+    <%= @turn.motive %>
   </p>
 
-  <p>
-    <strong>State:</strong>
-    <%= turn.state %>
+  <p class="fs-4" style="color: #1F3864">
+    <strong>Estado:</strong>
+    <%= convert(@turn.state) %>
   </p>
 
-  <p>
-    <strong>Result:</strong>
-    <%= turn.result %>
+  <p class="fs-4" style="color: #1F3864">
+    <strong>Sucursal:</strong>
+    <%= @turn.subsidiary.name %>
   </p>
+
+  <% if @turn.state %>
+    <p class="fs-4" style="color: #1F3864">
+      <strong>Atendido por:</strong>
+       <%= @turn.staff.email %>
+    </p>
+
+    <p class="fs-4" style="color: #1F3864">
+      <strong>Resultado:</strong>
+      <%= @turn.result %>
+    </p>
+  <% end %>
 
 </div>

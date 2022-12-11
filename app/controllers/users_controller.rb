@@ -12,9 +12,9 @@ class UsersController < ApplicationController
 
     def index
       if current_user.admin?
-        @users= User.paginate(page: params[:page],per_page: 8)
+        @users= User.all.order(role: :asc, email: :asc).paginate(page: params[:page],per_page: 8)
       elsif current_user.staff?
-        @users= User.client.paginate(page: params[:page],per_page: 8)
+        @users= User.client.order(email: :asc).paginate(page: params[:page],per_page: 8)
       end
     end
 

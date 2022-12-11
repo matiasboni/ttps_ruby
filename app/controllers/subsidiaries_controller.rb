@@ -30,7 +30,7 @@ class SubsidiariesController < ApplicationController
     @subsidiary = Subsidiary.new(subsidiary_params)
     respond_to do |format|
       if @subsidiary.save
-        format.html { redirect_to subsidiary_url(@subsidiary), notice: "Subsidiary was successfully created." }
+        format.html { redirect_to subsidiary_url(@subsidiary), notice: "La sucursal fue creada exitosamente." }
         format.json { render :show, status: :created, location: @subsidiary }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,7 +43,7 @@ class SubsidiariesController < ApplicationController
   def update
     respond_to do |format|
       if @subsidiary.update(subsidiary_params)
-        format.html { redirect_to subsidiary_url(@subsidiary), notice: "Subsidiary was successfully updated." }
+        format.html { redirect_to subsidiary_url(@subsidiary), notice: "La sucursal fue actualizada exitosamente." }
         format.json { render :show, status: :ok, location: @subsidiary }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -57,7 +57,7 @@ class SubsidiariesController < ApplicationController
     @subsidiary.destroy
 
     respond_to do |format|
-      format.html { redirect_to subsidiaries_url, notice: "Subsidiary was successfully destroyed." }
+      format.html { redirect_to subsidiaries_url, notice: "La sucursal ha sido eliminada." }
       format.json { head :no_content }
     end
   end

@@ -1,0 +1,29 @@
+<%= render "layouts/navbar" %>
+<h1 class ="text-center" style="color: #1F3864">Atender un turno</h1>
+
+ <% if @turn.errors.any? %>
+    <div style="color: #1F3864">
+      <h2>Se han encontrado <%= pluralize(@turn.errors.count, "errores") %> :</h2>
+      <ul>
+        <% @turn.errors.each do |error| %>
+          <li><%= error.message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= render "turn", turn: @turn %>
+
+<%= form_with model: @turn, url:confirm_attend_turn_path , method: :patch do |form| %>
+  <div>
+    <%= form.label :result,"Resultado de la solicitud" ,class:'form-label' %>
+    <%= form.text_area :result , class:'form-control'%>
+  </div>
+
+  <%= form.hidden_field :staff_id, value: current_user.id %>
+  <%= form.hidden_field :state, value: true %>
+  <br>
+  <div>
+    <%= form.submit "Atender Turno" %>
+  </div>
+<% end %>
