@@ -48,6 +48,11 @@ class TurnsController < ApplicationController
 
   # GET /turns/1/edit
   def edit
+    if @turn.date < DateTime.current
+      respond_to do |format|
+        format.html { redirect_to turns_url, alert: "El turno no puede ser editado porque ya ha pasado.Si es el mismo día y la sucursal sigue abierta,aun puede ser atendido,sino cancele el turno." }
+      end
+    end
   end
 
   # POST /turns or /turns.json

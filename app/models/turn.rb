@@ -33,7 +33,7 @@ class Turn < ApplicationRecord
     end
 
     def is_create_action?
-        self.state==nil
+        self.state==false
     end
 
 
