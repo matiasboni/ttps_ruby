@@ -25,7 +25,7 @@
         <% if ! turn.state %>
         <td><%= button_to 'Editar', edit_turn_path(turn),method: :get , :class=> 'button1' %></td>
         <td><%= button_to "Cancelar", turn, method: :delete, form: {data: {'turbo-confirm': 
-        'Esta seguro que desea eliminar esta sucursal?' }} , :class=> 'button1' %></td>
+        '¿Esta seguro que desea cancelar este turno?' }} , :class=> 'button1' %></td>
         <% end %>
       </tr>
     <% end %>

@@ -19,6 +19,11 @@ class TurnsController < ApplicationController
   end
 
   def attend
+    if ! helpers.can_attend?(@turn)
+      respond_to do |format|
+        format.html { redirect_to index_turns_url, alert: "El turno no puede ser atendido ya que no se encuentra en el dia o en el horario." }
+      end
+    end
   end
 
   def confirm_attend

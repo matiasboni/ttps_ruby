@@ -26,7 +26,8 @@
         </tr>
       </thead>
       <tbody>
-         <% @subsidiary.bussiness_hours.each do |s| %>
+         <% order=@subsidiary.bussiness_hours.sort_by{|s| s.day} %>
+         <% order.each do |s| %>
           <tr>
             <td>
               <%=  day_to_string(s.day) %>
