@@ -1,5 +1,5 @@
 class BussinessHour < ActiveRecord::Base
-    belongs_to :subsidiary
+    has_and_belongs_to_many :subsidiary
 
     #Validaciones
     validates :opening_time ,presence:{message: "La hora de apertura no puede ser blanco"}

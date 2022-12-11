@@ -19,6 +19,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_04_213438) do
     t.index ["subsidiary_id"], name: "index_bussiness_hours_on_subsidiary_id"
   end
 
+  create_table "bussiness_hours_subsidiaries", id: false, force: :cascade do |t|
+    t.integer "subsidiary_id"
+    t.integer "bussiness_hour_id"
+    t.index ["bussiness_hour_id"], name: "index_bussiness_hours_subsidiaries_on_bussiness_hour_id"
+    t.index ["subsidiary_id"], name: "index_bussiness_hours_subsidiaries_on_subsidiary_id"
+  end
+
   create_table "subsidiaries", force: :cascade do |t|
     t.string "name"
     t.string "address"

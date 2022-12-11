@@ -1,8 +1,13 @@
 <div id="<%= dom_id turn %>">
 <p class="fs-4" style="color: #1F3864">
+    <strong>Turno de:</strong>
+    <%= @turn.client.email %>
+  </p>
+<p class="fs-4" style="color: #1F3864">
     <strong>Fecha:</strong>
     <%= I18n.l(@turn.date.to_date, locale: :es) %> 
 </p>
+
 
   <p class="fs-4" style="color: #1F3864">
     <strong>Hora:</strong>

@@ -6,10 +6,10 @@ class Turn < ApplicationRecord
     #Validaciones
     validates :date , presence:{message: "La fecha no puede ser blanco."}
     validates :date , comparison:{greater_than: DateTime.current , message: "La fecha y hora de solicitud debe ser futura."} , if: :is_create_action?
-    validates :motive , presence:{message: "Debe dar un motivo de la solicitud."}
+    validates :motive , length:{ in: 4..100 ,message:"Debe dar un motivo entre 4 y 100 caracteres."}
     validates :subsidiary , presence:{message: "Debe seleccionar una sucursal."}
     validates :client , presence:{message: "Debe tener asociado un cliente."}
-    validates :result , presence:{message: "Debe dar un resultado al turno."} , if: :is_attend_action?
+    validates :result , length:{ in: 4..100 ,message:"Debe dar un resultado entre 4 y 100 caracteres."} , if: :is_attend_action?
     validate :is_in_range?, if: :is_not_nil?
 
     private
