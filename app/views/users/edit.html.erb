@@ -6,7 +6,7 @@
 
 <% if @user.errors.any? %>
     <div style="color: #1F3864">
-      <h2>Se han encontrado <%= pluralize(@user.errors.count, "errores") %> :</h2>
+      <h2>Se ha encontrado <%= pluralize(@user.errors.count, "error") %> :</h2>
       <ul>
         <% @user.errors.each do |error| %>
           <li><%= error.message %></li>
@@ -26,7 +26,7 @@
   <div data-controller="roles" data-roles-show-if-value="staff">
   <div>
     <%= form.label :role, "Rol" , :class=> 'form-label' %>
-    <%= form.select :role , [["Administrador","admin"],["Personal Bancario","staff"]],{class: 'form-select'} ,{data: {roles_target: "input", action: "change->roles#toggle"}}  %>
+    <%= form.select :role , [["Administrador","admin"],["Personal Bancario","staff"],["Cliente","client"]],{class: 'form-select'} ,{data: {roles_target: "input", action: "change->roles#toggle"}}  %>
   </div>
    <br>
 
@@ -36,5 +36,5 @@
     </div>
 </div>
 
-   <%= form.submit "Confirmar cambios" %> 
+   <%= form.submit "Confirmar cambios",class:"button1" %> 
 <% end %>

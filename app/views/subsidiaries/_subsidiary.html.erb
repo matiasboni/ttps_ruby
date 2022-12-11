@@ -14,11 +14,6 @@
     <%= subsidiary.phone_number %>
   </p>
 
-  <% if @subsidiary.bussiness_hours.empty? %>
-    <p class="fs-4" style="color: #1F3864">
-       Esta sucursal no tiene horarios de atención por ahora.
-    </p>
-  <% else %>
   <p class="fs-4" style="color: #1F3864">
     <strong>Horarios de atención:</strong>
   </p>
@@ -46,6 +41,5 @@
         <% end %>
   </tbody>
   </table>
-  <% end %>
 
 </div>

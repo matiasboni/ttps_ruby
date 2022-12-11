@@ -4,7 +4,11 @@
       <h2>Se han encontrado <%= pluralize(user.errors.count, "errores") %> :</h2>
       <ul>
         <% user.errors.each do |error| %>
+          <% if error.attribute.to_s != "subsidiary" %>
+          <li><%= error.full_message %></li>
+          <% else %>
           <li><%= error.message %></li>
+          <% end %>
         <% end %>
       </ul>
     </div>
@@ -30,9 +34,9 @@
     <div data-roles-target="output">
     <%= form.label :subsidiary_id, "Sucursal" , :class=> 'form-label' %>
     <% options = Subsidiary.all.map{|s| [s.name,s.id]} %>
-    <%= form.select :subsidiary_id , options_for_select(options),{include_blank:true} , {class: 'form-select'} %>
+    <%= form.select :subsidiary_id , options_for_select(options),{include_blank:true} %>
     </div>
 </div>
 
-   <%= form.submit "Guardar Usuario" %> 
+   <%= form.submit "Guardar Usuario",class:"button1" %> 
 <% end %>

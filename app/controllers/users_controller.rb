@@ -52,11 +52,13 @@ class UsersController < ApplicationController
     end
 
     def destroy
-      @user.destroy
-  
       respond_to do |format|
-        format.html { redirect_to users_url, notice: "El usuario fue correctamente eliminado" }
-        format.json { head :no_content }
+        if @user.destroy
+          format.html { redirect_to users_url, notice: "El usuario fue correctamente eliminado" }
+          format.json { head :no_content }
+        else
+          format.html { redirect_to users_url,alert: @user.errors.map{|e|e.message}[0]}
+        end
       end
     end
 

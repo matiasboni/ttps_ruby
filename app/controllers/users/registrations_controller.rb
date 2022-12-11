@@ -22,7 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
      super
-     flash[:notice]="Se actualizaron los datos correctamente"
+    flash[:notice]="Se actualizaron los datos correctamente"   
   end
 
   # DELETE /resource

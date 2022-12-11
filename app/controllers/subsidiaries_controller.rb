@@ -54,11 +54,13 @@ class SubsidiariesController < ApplicationController
 
   # DELETE /subsidiaries/1 or /subsidiaries/1.json
   def destroy
-    @subsidiary.destroy
-
     respond_to do |format|
-      format.html { redirect_to subsidiaries_url, notice: "La sucursal ha sido eliminada." }
-      format.json { head :no_content }
+      if @subsidiary.destroy
+        format.html { redirect_to subsidiaries_url, notice: "La sucursal ha sido eliminada." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to subsidiaries_url,alert: @subsidiary.errors.map{|e|e.message}[0]}
+      end
     end
   end
 

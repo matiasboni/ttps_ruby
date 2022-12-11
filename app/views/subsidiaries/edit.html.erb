@@ -3,9 +3,5 @@
 
 <%= render "form", subsidiary: @subsidiary %>
 
-<br>
+<%= button_to "Volver", subsidiaries_path ,method: :get,class:"button1"  %>
 
-<div>
-  <%= button_to "Detalle", @subsidiary, method: :get %>
-  <%= button_to "Volver", subsidiaries_path ,method: :get  %>
-</div>
