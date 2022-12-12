@@ -86,9 +86,14 @@ $ git clone https://github.com/matiasboni/ttps_ruby.git
   $ rails s
 ```
 
-## Datos de prueba
+# Gemas adicionales utilizadas.
+- Bootstrap: utilizada para dar estilos.
+- Devise: utilizada para autenticación y autorización de usuarios.
+- Will_paginate: utilizada para la paginación de listados.
 
-#### Sucursales
+# Datos de prueba
+
+## Sucursales
 - Sucursal1
 - Sucursal2
 - Sucursal3
@@ -110,32 +115,42 @@ Los horarios de atención de las sucursales pares son:
 - Jueves de 10:00 a 16:00 .
 - Viernes de 08:00 a 14:00 .
 
-#### Usuarios
+## Usuarios
 
-###### Administrador
+#### Administrador
 - admin@gmail.com
 
-###### Personal Bancario
+#### Personal Bancario
 - personal@gmail.com , personal1@gmail.com y personal2@gmail.com asignados a la Sucursal1.
-- personal3 y personal4 asignados a la Sucursal2.
-- personal5 y personal6 asignados a la Sucursal3.
-- personal7 y personal8 asignados a la Sucursal4.
-- personal9 y personal10 asignados a la Sucursal5.
+- personal3@gmail.com y personal4@gmail.com asignados a la Sucursal2.
+- personal5@gmail.com y personal6@gmail.com asignados a la Sucursal3.
+- personal7@gmail.com y personal8@gmail.com asignados a la Sucursal4.
+- personal9@gmail.com y personal10@gmail.com asignados a la Sucursal5.
 
-###### Clientes
+#### Clientes
 - usuario@gmail.com
 - usuario1@gmail.com
 - usuario2@gmail.com
 - usuario3@gmail.com
 - usuario4@gmail.com
 
-** Las contraseñas de todos los usuarios es 123456 . **
+**Las contraseñas de todos los usuarios es 123456.**
 
 #### Turnos
 - Dos turnos pendientes de la Sucursal1 solicitados por el cliente usuario@gmail.com.
 - Un turno pendiente de la Sucursal2 solicitado por el cliente usuario@gmail.com.
 - Un turno pendiente de la Sucursal2 solicitado por el cliente usuario1@gmail.com.
 - Un turno atendido de la Sucursal2 solicitado por el cliente usuario1@gmail.com y atendido por personal3@gmail.com.
+
+# Decisiones de diseño importantes .
+
+## Modelo
+
+![Modelo UML](/home/matias/Descargas/modelo.png)
+
+
+
+
 
 
 
