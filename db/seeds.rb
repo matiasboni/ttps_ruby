@@ -1,12 +1,12 @@
 #Creación horarios.
-h1=BussinessHour.create(day:1,opening_time:DateTime.parse("2000-01-01 13:00 "),closing_time:DateTime.parse("2000-01-01 17:00 "))
-h2=BussinessHour.create(day:2,opening_time:DateTime.parse("2000-01-01 10:00 "),closing_time:DateTime.parse("2000-01-01 16:00 "))
-h3=BussinessHour.create(day:3,opening_time:DateTime.parse("2000-01-01 17:00 "),closing_time:DateTime.parse("2000-01-01 22:00 "))
-h4=BussinessHour.create(day:4,opening_time:DateTime.parse("2000-01-01 10:00 "),closing_time:DateTime.parse("2000-01-01 16:00 "))
-h5=BussinessHour.create(day:5,opening_time:DateTime.parse("2000-01-01 13:00 "),closing_time:DateTime.parse("2000-01-01 17:00 "))
-h6=BussinessHour.create(day:1,opening_time:DateTime.parse("2000-01-01 16:00 "),closing_time:DateTime.parse("2000-01-01 20:00 "))
-h7=BussinessHour.create(day:2,opening_time:DateTime.parse("2000-01-01 14:00 "),closing_time:DateTime.parse("2000-01-01 17:00 "))
-h8=BussinessHour.create(day:5,opening_time:DateTime.parse("2000-01-01 08:00 "),closing_time:DateTime.parse("2000-01-01 14:00 "))
+h1=BussinessHour.create(day:1,opening_time:DateTime.parse("2000-01-01 13:00 -03:00 "),closing_time:DateTime.parse("2000-01-01 17:00 -03:00 "))
+h2=BussinessHour.create(day:2,opening_time:DateTime.parse("2000-01-01 10:00 -03:00"),closing_time:DateTime.parse("2000-01-01 16:00 -03:00 "))
+h3=BussinessHour.create(day:3,opening_time:DateTime.parse("2000-01-01 17:00 -03:00"),closing_time:DateTime.parse("2000-01-01 22:00  -03:00"))
+h4=BussinessHour.create(day:4,opening_time:DateTime.parse("2000-01-01 10:00 -03:00"),closing_time:DateTime.parse("2000-01-01 16:00 -03:00 "))
+h5=BussinessHour.create(day:5,opening_time:DateTime.parse("2000-01-01 13:00 -03:00"),closing_time:DateTime.parse("2000-01-01 17:00 -03:00 "))
+h6=BussinessHour.create(day:1,opening_time:DateTime.parse("2000-01-01 16:00 -03:00"),closing_time:DateTime.parse("2000-01-01 20:00 -03:00 "))
+h7=BussinessHour.create(day:2,opening_time:DateTime.parse("2000-01-01 14:00 -03:00"),closing_time:DateTime.parse("2000-01-01 17:00 -03:00 "))
+h8=BussinessHour.create(day:5,opening_time:DateTime.parse("2000-01-01 08:00 -03:00"),closing_time:DateTime.parse("2000-01-01 14:00 -03:00 "))
 
 
 #Creación sucursales.
@@ -20,13 +20,10 @@ h8=BussinessHour.create(day:5,opening_time:DateTime.parse("2000-01-01 08:00 "),c
     s.save
 end
 
-#Creación admins
+#Creación admin
 User.create(email:"admin@gmail.com",password:"123456",role:0)
-(1..4).each do |i|
-    User.create(email:"admin"+i.to_s+"@gmail.com",password:"123456",role:0)
-end
 
-#Creación usuarios
+#Creación clientes
 User.create(email:"usuario@gmail.com",password:"123456",role:2)
 (1..4).each do |i|
     User.create(email:"usuario"+i.to_s+"@gmail.com",password:"123456",role:2)
@@ -50,11 +47,11 @@ end
 
 
 #Creación turnos
-Turn.create(date:DateTime.parse("2022-12-12 14:00"),motive:"Motivo1",state:false,client_id:6,subsidiary_id:1)
-Turn.create(date:DateTime.parse("2022-12-14 18:00"),motive:"Motivo2",state:false,client_id:6,subsidiary_id:1)
-Turn.create(date:DateTime.parse("2022-12-15 11:30"),motive:"Motivo3",state:false,client_id:6,subsidiary_id:2)
-Turn.create(date:DateTime.parse("2022-12-15 14:30"),motive:"Motivo4",state:false,client_id:7,subsidiary_id:2)
-Turn.create(date:DateTime.parse("2022-12-05 18:45"),motive:"Motivo5",state:true,client_id:7,staff_id:3,subsidiary_id:2,result:"Resultado")
+Turn.create(date:DateTime.parse("2022-12-12 14:00 -03:00"),motive:"Motivo1",state:false,client_id:2,subsidiary_id:1)
+Turn.create(date:DateTime.parse("2022-12-14 18:00 -03:00"),motive:"Motivo2",state:false,client_id:2,subsidiary_id:1)
+Turn.create(date:DateTime.parse("2022-12-15 11:30 -03:00"),motive:"Motivo3",state:false,client_id:2,subsidiary_id:2)
+Turn.create(date:DateTime.parse("2022-12-15 14:30 -03:00"),motive:"Motivo4",state:false,client_id:3,subsidiary_id:2)
+Turn.create(date:DateTime.parse("2022-12-05 18:45 -03:00"),motive:"Motivo5",state:true,client_id:3,staff_id:10,subsidiary_id:2,result:"Resultado")
 
 
 

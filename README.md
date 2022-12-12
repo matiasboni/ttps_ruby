@@ -59,22 +59,85 @@ y tener que esperar a ser atendida.
   $ rbenv versions
   $ rbenv global 2.7.6
 ```
-## Clonar repositorio con git.
+#### Clonar repositorio con git.
 Abrir terminal y clonar repositorio.
 ```bash
 $ git clone https://github.com/matiasboni/ttps_ruby.git
 ```
 
-## Entrar al directorio donde se clono el proyecto.
+#### Entrar al directorio donde se clono el proyecto.
 ```bash
   $ cd ttps_ruby
 ```
 
-## Instalar Bundler y gemas utilizadas.
+#### Instalar Bundler y gemas utilizadas.
 ```bash
   $ gem install bundler
   $ bundler install
 ```
+
+#### Cargar datos de prueba
+```bash
+  $ rails db:setup
+```
+
+#### Iniciar la aplicación
+```bash
+  $ rails s
+```
+
+## Datos de prueba
+
+#### Sucursales
+- Sucursal1
+- Sucursal2
+- Sucursal3
+- Sucursal4
+- Sucursal5
+- Sucursal6
+- Sucursal7
+- Sucursal8
+
+Los horarios de atención de las sucursales impares son:
+- Lunes de 13:00 a 17:00 .
+- Martes de 14:00 a 17:00 .
+- Miércoles de 17:00 a 22:00 .
+- Viernes de 13:00 a 17:00 .
+
+Los horarios de atención de las sucursales pares son:
+- Lunes de 16:00 a 20:00 .
+- Martes de 10:00 a 16:00 .
+- Jueves de 10:00 a 16:00 .
+- Viernes de 08:00 a 14:00 .
+
+#### Usuarios
+
+###### Administrador
+- admin@gmail.com
+
+###### Personal Bancario
+- personal@gmail.com , personal1@gmail.com y personal2@gmail.com asignados a la Sucursal1.
+- personal3 y personal4 asignados a la Sucursal2.
+- personal5 y personal6 asignados a la Sucursal3.
+- personal7 y personal8 asignados a la Sucursal4.
+- personal9 y personal10 asignados a la Sucursal5.
+
+###### Clientes
+- usuario@gmail.com
+- usuario1@gmail.com
+- usuario2@gmail.com
+- usuario3@gmail.com
+- usuario4@gmail.com
+
+** Las contraseñas de todos los usuarios es 123456 . **
+
+#### Turnos
+- Dos turnos pendientes de la Sucursal1 solicitados por el cliente usuario@gmail.com.
+- Un turno pendiente de la Sucursal2 solicitado por el cliente usuario@gmail.com.
+- Un turno pendiente de la Sucursal2 solicitado por el cliente usuario1@gmail.com.
+- Un turno atendido de la Sucursal2 solicitado por el cliente usuario1@gmail.com y atendido por personal3@gmail.com.
+
+
 
 
 
