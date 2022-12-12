@@ -146,7 +146,7 @@ Los horarios de atención de las sucursales pares son:
 
 ## Modelo
 
-![Modelo UML](/home/matias/Descargas/modelo.png)
+![Modelo UML](https://raw.githubusercontent.com/matiasboni/ttps_ruby/main/app/assets/images/modelo.png)
 
 
 
