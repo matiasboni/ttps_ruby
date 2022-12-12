@@ -148,6 +148,33 @@ Los horarios de atención de las sucursales pares son:
 
 ![Modelo UML](https://raw.githubusercontent.com/matiasboni/ttps_ruby/main/app/assets/images/modelo.png)
 
+## Sucursales
+       Las sucursales tienen los atributos name,phone_number y address,todos requeridos.Además tienen 
+    como mínimo un horario de atención,es decir, al momento de crearla si o sí va a tener horarios de atención.
+       Otra consideración es que una sucursal no puede ser eliminada si tiene turnos pendientes o 
+    atendidos ; o si tiene personal bancario asignado.Ej: las sucursales cargadas de la 1 a la 5 no pueden ser eliminadas.De la 5 a la 8 si pueden ser eliminadas.
+
+## Usuarios
+       Los usuarios tienen los atributos email,password y role,todos requeridos.El rol 0 es el admin,el
+    rol 1 es el personal bancario y el rol 2 el cliente.Cuando se registra un nuevo usuario mediante el registrar público se le asigna automáticamente el rol de cliente.
+       Otra consideración es que un usuario con el rol personal bancario no puede eliminarse si tiene 
+    turnos atendidos.Ej:personal3@gmail.com no puede eliminarse,todo el resto del personal sí.
+       Por otro lado un cliente no puede eliminarse si tiene turnos pendientes o
+    atendidos.Ej:usuario@gmail.com y usuario1@gmail.com no pueden eliminarse,los demás si.
+       El usuario con rol administrador en la acción de editar otros usuarios solo puede editar el rol 
+    y la sucursal en el caso que se trate de un personal bancario.Por otro lado todos los usuarios pueden modificar su email y su contraseña.
+
+## Turnos
+       Los turnos tienen los atributos que se observan en el diagrama.El cliente solo puede solicitar
+    turnos en las bandas horarias de las sucursales.Además como los turnos son de 15 minutos,el último horario que se puede solicitar es 15 minutos antes de la finalización del horario de atención.Ej: si una sucursal cierra a las 17,el cliente solo puede solicitar turnos hasta las 16:45 .
+       El personal bancario solo puede atender los turnos del día y en el horario de atención de dicho
+    día de la sucursal.Ej:el personal4@gmail.com podrá atender el turno del jueves 15 de diciembre 11:30 en cualquier momento entre las 10:00 y las 16:00 ya que es el horario de los jueves de la Sucursal2.
+       Los turnos por parte del usuario no pueden ser editados si la hora y fecha del turno ya pasó.
+
+## Horarios de atención
+       La hora de apertura de los horarios de atención debe ser menor a la hora de cierre de la 
+    sucursal.Todas las sucursales tienen asignado como mínimo un horario de atención.
+
 
 
 
